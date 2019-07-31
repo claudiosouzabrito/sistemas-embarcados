@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Monitoramento de Máquinas Elétricas</title>
+</head>
+<body>
+   <h1>Vibração</h1>
+   <h2>Eixo X:</h2>
+   <p id="vx">"xxx"</p>
+   <h2>Eixo Y:</h2>
+   <p id="vy">"yyy"</p>
+   <h2>Eixo Z:</h2>
+   <p id="vz">"zzz"</p>
+  
+   <button onclick="myFunction()">Try it</button>
+   <p id="teste"></p>
+
+
+
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+
+   <!-- TODO: Add SDKs for Firebase products that you want to use
+   https://firebase.google.com/docs/web/setup#config-web-app -->
+   <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBgU86JsRga_iiKS434hJXsMnRnW45XnXo",
+        authDomain: "teste-f83e2.firebaseapp.com",
+        databaseURL: "https://teste-f83e2.firebaseio.com",
+        projectId: "teste-f83e2",
+        storageBucket: "teste-f83e2.appspot.com",
+        messagingSenderId: "492054886264",
+        appId: "1:492054886264:web:bde095c8aa79f180"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.database.Reference
+
+    var razao_x_Ref = firebase.database().ref('razao de pico X');
+    var razao_Y_Ref = firebase.database().ref('razao de pico Y');
+    var razao_Z_Ref = firebase.database().ref('razao de pico Z');
+
+    razao_x_Ref.on('value', function(snapshot){
+      var razao_X = snapshot.val();
+      document.getElementById("vx").innerHTML = razao_X;})
+    
+    razao_y_Ref.on('value', function(snapshot){var razao_Y = snapshot.val();
+      document.getElementById("vy").innerHTML = razao_y;}) 
+    
+    razao_Z_Ref.on('value', function(snapshot){var razao_Z = snapshot.val();
+      document.getElementById("vz").innerHTML = razao_z;})
+
+
+function myFunction() {
+  var x = document.getElementById("teste")
+  x.innerHTML = Math.floor((Math.random() * 100) + 1);
+}
+</script>
+
+</body>
+</html>
